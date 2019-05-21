@@ -37,7 +37,7 @@ Now go ahead and do the peak picking, or load in the existing file...peak pickin
 #same file organization as in XCMS < 3
 #path to the mzML files (need to set on each computer)
 
-usePath <- "C:/Users/Krista/Documents/Dropbox/_projects/workingWithIS/mzML_Lumos_MS1_updated"
+usePath <- "/data"
 
 ext <- ".mzML"
 pre <- paste0(usePath,"/")
@@ -54,7 +54,7 @@ mzdatafiles <- list.files(usePath,recursive = FALSE, full.names=TRUE,
 #10/2018: setup the groups now...no need to do peak picking on data files that 
 # I will not use (and easier with the new XCMS3 code since sampclass no longer exists in XCMS3)
 
-wDir <-  "C:/Users/Krista/Documents/Dropbox/_projects/workingWithIS/advancingMS/"
+wDir <-  "/ms/"
 
 all <- readWorksheetFromFile(paste0(wDir,"simple_sampleList.xlsx"),sheet = 1)
 putDataHere <-data.frame()
@@ -130,7 +130,7 @@ my_data <- readMSData(files = paste0(pre,putDataHere$FileWithExtension),
 # NameOfFile <- paste0(nBase,"_",nDate,".Rimage")
 # rm(nDate,nBase)
 
-nBase <- "simple_XCMS3_output"
+nBase <- "/output/simple_XCMS3_output"
 fName_allPeaks <- paste0(nBase,'_listAllPeaks','.csv')
 fName_aligned <- paste0(nBase,'_aligned','.csv')
 fName_peaksPicked <- paste0(nBase, '_picked', '.pdf')
@@ -629,4 +629,3 @@ save.image(NameOfFile)
 
 
 ```
-
