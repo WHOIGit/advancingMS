@@ -539,8 +539,7 @@ nColors <- ncol(chrs)
 useColors <- brewer.pal(max(nColors,3),'Dark2')
 
 cairo_pdf(file = fName_peaksPicked,onefile=TRUE)
-#for (i in 1:nrow(chrs)){
-for (i in 1:100) {  ##short for testing
+for (i in 1:nrow(chrs)){
     par(mfrow = c(3,1)) #set to c(3,1) if TRUE in following if statement, otherwise c(2,1)
     plot(chrs[i, ], col = useColors)
     plot(chrs_raw[i, ], col = useColors)
