@@ -520,32 +520,6 @@ rm(xsa,xsaF,xsaFI,xsaC)
 
 
 ```{r makePDFofFeatures_new, eval = TRUE}
-#Johannes Rainer posted this code for me to use on the Metabolomics Forum (10/24/2018)
-#will be incorporated into XCMS > 3.3.4 and in the XCMS Vignette
-# 
-# This function takes an XCMSnExp object, extracts chromatograms for each feature 
-#and returns it as an Chromatograms object. The Chromatograms arranges the XIC in 
-#a two-dimensional matrix, columns being the individual samples. Each row contains
-#the XIC for one feature. It is thus straight forward to plot the data for one 
-#specific feature. 
-
-featureChromatograms <- function(x, expandRt = 0, aggregationFun = "max",
-                                 ...) {
-    if (!hasFeatures(x))
-        stop("No feature definitions present. Please run first 'groupChromPeaks'")
-    pks <- chromPeaks(x)
-    mat <- do.call(rbind, lapply(featureDefinitions(x)$peakidx, function(z) {
-        pks_current <- pks[z, , drop = FALSE]
-        c(range(pks_current[, c("rtmin", "rtmax")]),
-          range(pks_current[, c("mzmin", "mzmax")]))
-    }))
-    colnames(mat) <- c("rtmin", "rtmax", "mzmin", "mzmax")
-    chromatogram(x, rt = mat[, 1:2], mz = mat[, 3:4],
-                 aggregationFun = aggregationFun, ...)
-}
-
-
-#now use the code from Jo:
 #extract the EICs from the grouped XCMSnExp object:
 chrs <- featureChromatograms(xgF)
 
