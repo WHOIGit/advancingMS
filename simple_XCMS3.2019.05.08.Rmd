@@ -417,7 +417,8 @@ plotChromPeakDensity(xgC, mz = mzr, col = cols, param = pdp,
 # The results from the correspondence can be extracted using the featureDefinitions method, that returns a DataFrame with the definition of the features (i.e. the mz and rt ranges and, in column peakidx, the index of the chromatographic peaks in the chromPeaks matrix for each feature).
 
 ## Extract the feature definitions
-featureDefinitions(xgC)
+defs <- featureDefinitions(xgC)
+defs
 
 # The featureValues method returns a matrix with rows being features and columns samples. The content of this matrix can be defined using the value argument. Setting value = "into" returns a matrix with the integrated signal of the peaks corresponding to a feature in a sample. Any column name of the chromPeaks matrix can be passed to the argument value. Below we extract the integrated peak intensity per feature/sample.
 
@@ -601,5 +602,10 @@ rm(new_columns,tExport,shortFilename, fullFilenames) #house cleaning
 
 save.image(NameOfFile)
 
+```
+
+```{r ms2, eval = FALSE}
+featureSpectra(xgC, msLevel = 2, expandRt = 10, expandMz = 0, ppm = 1,
+  skipFilled = FALSE, return.type = c("Spectra"))
 
 ```
