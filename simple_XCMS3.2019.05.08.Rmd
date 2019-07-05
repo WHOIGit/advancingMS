@@ -24,8 +24,8 @@ library(magrittr)
 library(ggplot2)
 library(ggdendro)
 
-#setup the option to use parallel processing...arabica has four cores, from this function: detectCores()
-register(bpstart(SnowParam(4)))
+#setup the option to use parallel processing
+register(bpstart(SnowParam()))
 
 ```
 
